@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">MyTravel</string>
+    <string name="flights">Flights</string>
+    <string name="visa">Visa</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="welcome">Welcome</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 </resources>

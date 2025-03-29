@@ -5,6 +5,6 @@
     android:id="@+id/btnFlights"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Dashboard">
+    tools:context=".Welcome">
 
 </androidx.constraintlayout.widget.ConstraintLayout>
