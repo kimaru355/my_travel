@@ -18,25 +18,30 @@
             android:layout_height="wrap_content"
             android:text="@string/dashboard" />
         <Button
-            android:id="@+id/btnFlights"
+            android:id="@+id/btnWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/flights" />
+            android:text="@string/welcome" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
+            android:id="@+id/btnFlights"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/flights" />
+        <Button
             android:id="@+id/btnVisa"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/visa" />
         <Button
-            android:id="@+id/btnWelcome"
+            android:id="@+id/btnOath"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/welcome" />
+            android:text="@string/oath" />
     </LinearLayout>
     <LinearLayout
         android:orientation="horizontal"

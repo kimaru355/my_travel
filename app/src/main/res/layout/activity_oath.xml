@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Oath">
+
+    <TextView
+        android:id="@+id/oathText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="I, [Your Name], do agree that the statements made in this application are true and correct to the best of my knowledge. Any false information may result in legal action."
+        android:textSize="16sp"
+        android:textColor="#000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingBottom="20dp"/>
+
+    <CheckBox
+        android:id="@+id/oathCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I agree to the above declaration"
+        app:layout_constraintTop_toBottomOf="@id/oathText"
+        app:layout_constraintStart_toStartOf="parent"/>
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:background="#007bff"
+        android:textColor="#fff"
+        android:enabled="false"
+        app:layout_constraintTop_toBottomOf="@id/oathCheckbox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

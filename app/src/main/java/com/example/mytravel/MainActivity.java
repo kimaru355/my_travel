@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnWelcome = findViewById(R.id.btnWelcome);
         Button btnRegister = findViewById(R.id.btnRegister);
         Button btnLogin = findViewById(R.id.btnLogin);
+        Button btnOath = findViewById(R.id.btnOath);
 
         btnDashboard.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +71,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(MainActivity.this, Login.class);
+                startActivity(i);
+            }
+        });
+
+        btnOath.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, Oath.class);
                 startActivity(i);
             }
         });
