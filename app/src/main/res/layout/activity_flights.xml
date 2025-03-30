@@ -1,10 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/btnFlights"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="60dp"
+    android:paddingBottom="40dp"
     tools:context=".Flights">
+
+    <!-- Search bar for filtering flights -->
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search flights..."
+        android:iconifiedByDefault="false"
+        android:padding="8dp" />
+
+    <!-- RecyclerView to display flights -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/flightsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
+
+    <Button
+        android:id="@+id/btnMoreFlights"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View more flights"
+        app:layout_constraintTop_toBottomOf="@id/flightsRecyclerView"
+        android:layout_marginTop="20dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

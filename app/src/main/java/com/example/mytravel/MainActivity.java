@@ -1,15 +1,13 @@
 package com.example.mytravel;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,74 +17,35 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        Button btnDashboard = findViewById(R.id.btnDashboard);
-        Button btnFlights = findViewById(R.id.btnFlights);
-        Button btnVisa = findViewById(R.id.btnVisa);
-        Button btnWelcome = findViewById(R.id.btnWelcome);
-        Button btnRegister = findViewById(R.id.btnRegister);
-        Button btnLogin = findViewById(R.id.btnLogin);
-        Button btnOath = findViewById(R.id.btnOath);
 
-        btnDashboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Dashboard.class);
-                startActivity(i);
+        // Retrieve saved credentials
+        SharedPreferences sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = sharedPreferences.getBoolean("isLoggedIn", false);
+
+        if (isLoggedIn) {
+            // Redirect to Flights page
+
+            // Save to SharedPreferences
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean("isLoggedIn", true);
+            editor.apply();
+
+            boolean hasVisa = sharedPreferences.getBoolean("hasVisa", false);
+
+            // Redirect to main page or dashboard
+            if (hasVisa) {
+                Intent intent = new Intent(MainActivity.this, Flights.class);
+                startActivity(intent);
+            } else {
+                Intent intent = new Intent(MainActivity.this, Visa.class);
+                startActivity(intent);
             }
-        });
-
-        btnFlights.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Flights.class);
-                startActivity(i);
-            }
-        });
-
-        btnVisa.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Visa.class);
-                startActivity(i);
-            }
-        });
-
-        btnWelcome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Welcome.class);
-                startActivity(i);
-            }
-        });
-
-        btnRegister.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Register.class);
-                startActivity(i);
-            }
-        });
-
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Login.class);
-                startActivity(i);
-            }
-        });
-
-        btnOath.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(MainActivity.this, Oath.class);
-                startActivity(i);
-            }
-        });
-
-//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.btnFlights), (v, insets) -> {
-//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-//            return insets;
-//        });
+            finish();
+        } else {
+            // Redirect to Login page
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+            finish(); // Close MainActivity
+        }
     }
 }
